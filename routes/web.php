@@ -19,7 +19,7 @@ Auth::routes();
 //user
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('vote', 'HomeController@vote')->name('vote');
-Route::post('store', 'HomeController@store')->name('store');
+Route::post('store/{id}', 'HomeController@store')->name('store');
 Route::get('result', 'HomeController@result')->name('result');
 Route::get('about', 'HomeController@about')->name('about');
 Route::get('success', 'HomeController@success')->name('success');

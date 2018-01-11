@@ -26,6 +26,14 @@ $(function () {
             updateDisplay();
         });
 
+        // Vote
+        $('input[type=checkbox]').on('change', function (e) {
+    if ($('input[type=checkbox]:checked').length > 8) {
+        $(this).prop('checked', false);
+        alert("Allowed only 8");
+    }
+});
+
         // Actions
         function updateDisplay() {
             var isChecked = $checkbox.is(':checked');

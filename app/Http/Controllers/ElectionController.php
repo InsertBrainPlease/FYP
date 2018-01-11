@@ -56,6 +56,11 @@ class ElectionController extends Controller
             'end_time' => 'required', 
             ]);
 
+        $count = Election::all()->count();
+        if($count>0){
+            return view ('elections.full');
+        }
+
         $elecs = new Election;
 
         $elecs->title = $request->title;

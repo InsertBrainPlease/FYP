@@ -24,7 +24,7 @@
                           Sem: {{ $cand->sem}}<br>  
                           Faculty: {{ $cand->faculty}}<br>
                           Program: {{ $cand->program}} <br>
-                          Vote by percentage: 15%</p>
+                          Vote: {{ $cand->vote}} </p>
                         </div>
                       </div>
                       <hr>

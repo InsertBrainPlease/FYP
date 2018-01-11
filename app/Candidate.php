@@ -15,7 +15,7 @@ class Candidate extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'no_matric', 'sem', 'faculty', 'motto', 'program', 'image',
+        'name', 'no_matric', 'sem', 'faculty', 'motto', 'program', 'image', 'vote'
     ];
 
     /**

@@ -21,6 +21,28 @@
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
+                @if (count($errors) > 9)
+
+                <div class="alert-danger" role="alert">
+                    <div class="container">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!</strong>
+                        <ul class="mb-0">
+                            <li>{{ $error}}</li>
+                        </ul>
+                    </div>
+                </div>
+            @endif
+
+
+
+
+
+
+
+
+
+
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->

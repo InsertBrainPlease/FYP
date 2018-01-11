@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  @if(Auth::user()->voted<1)
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -14,7 +15,7 @@
                     •   There are 10 candidate’s name and choose 8 only.
                 </center>
                 @endforeach
-                <form class="form-horizontal" method="POST" action="{{ route ('store')}}">
+                <form class="form-horizontal" method="POST" action="{{ route ('store', Auth::user()->id ) }}">
                 {{ csrf_field() }}
                 @foreach ($cands as $cand)
                 <div class="row">
@@ -32,8 +33,8 @@
                           Motto: {{ $cand->motto}}</p>
 
                           <span class="button-checkbox">
-                            <button type="button" class="btn" data-color="primary" value= 1>Vote</button>
-                            <input type="checkbox" class="hidden" />
+                            <button type="button" class="btn" data-color="primary">Vote</button>
+                            <input type="checkbox" class="hidden" value="{{ $cand->id}}" name= "{{ $cand->no_matric }}"/>
                          </span>
                           
                           
@@ -50,4 +51,17 @@
                     </form>
                 </div>
            </div>
+          @else
+            <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading"><center>Vote Accepted</center></div>
+
+                <div class="panel-body">
+                 <center><p><strong>Thanks for your vote !</strong></p></center>
+                </div>
+            </div>
+        </div>
+    </div>
+  @endif
 @endsection

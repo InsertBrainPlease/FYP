@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('semester');
             $table->string('ic_no');
             $table->string('program');
+            $table->string('voted')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

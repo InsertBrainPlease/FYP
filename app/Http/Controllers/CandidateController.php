@@ -58,6 +58,11 @@ class CandidateController extends Controller
             'program' => 'required',
             ]);
 
+        $count = Candidate::all()->count();
+        if($count>9){
+            return view ('candidates.full');
+        }
+
         // Assign local variable
         $cands = new Candidate;
 

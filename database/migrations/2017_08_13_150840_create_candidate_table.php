@@ -21,6 +21,7 @@ class CreateCandidateTable extends Migration
             $table->string('faculty');
             $table->string('motto');
             $table->string('program');
+            $table->string('vote')->nullable();
             $table->timestamps();
 
         });

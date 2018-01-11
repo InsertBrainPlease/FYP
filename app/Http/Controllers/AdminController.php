@@ -35,7 +35,7 @@ class AdminController extends Controller
     {
         // $total_votes = $results->sum('votes');
         $elecs = Election::all();
-        $cands = Candidate::all();
+        $cands = Candidate::orderBy('vote' , 'desc')->get();
         return view('admins.adminresult',compact('cands', 'elecs'));
     }
 

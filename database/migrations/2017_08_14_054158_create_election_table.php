@@ -22,6 +22,7 @@ class CreateElectionTable extends Migration
             $table->date('end_date');
             $table->time('start_time');
             $table->time('end_time');
+            $table->string('result')->nullable();
             $table->timestamps();
     });
 }

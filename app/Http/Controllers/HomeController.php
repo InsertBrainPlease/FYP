@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function result()
     {
-        $cands = Candidate::all();
+        $cands = Candidate::orderBy('vote' , 'desc')->get();
         $elecs = Election::all();
         return view('pages.result',compact('cands', 'elecs'));
     }
@@ -56,19 +56,28 @@ class HomeController extends Controller
         return view('pages.success');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
 
-       $this->validate($request, [
+        //vote
+        $votes = $request->all();
+        $candidates = Candidate::all();
+        foreach ($votes as $vote) {
+            $find = Candidate::find($vote);
+            if ($find != null){
+                $find->vote += 1;
+                $find->save();
+            }
 
-            'vote' => 'required',
-            ]);
+        }
 
-            $cands = new Candidate;
+        $user = User::find($id);
 
-            $cands->votes = $request->votes;
-            $cands->save();
+        $user->voted = 1;
+        $user->save();
+
         
         return redirect()->route('success');
+
     }
 }
