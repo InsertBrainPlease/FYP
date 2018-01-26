@@ -8,6 +8,7 @@ use App\Candidate;
 use App\Election;
 use App\Result;
 use App\Position;
+use Session;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,8 @@ class HomeController extends Controller
     {
         $cands = Candidate::orderBy('vote' , 'desc')->get();
         $elecs = Election::all();
-        return view('pages.result',compact('cands', 'elecs'));
+        $total_votes = $cands->sum('vote');
+        return view('pages.result',compact('cands', 'elecs', 'total_votes'));
     }
 
     public function about()
@@ -61,6 +63,12 @@ class HomeController extends Controller
 
         //vote
         $votes = $request->all();
+        $total = count($votes);
+        if ($total < 9) { 
+            Session::flash('error', 'You cannot vote less than eight !');
+
+        return back();
+        }
         $candidates = Candidate::all();
         foreach ($votes as $vote) {
             $find = Candidate::find($vote);

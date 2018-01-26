@@ -32,6 +32,18 @@ $(function () {
         $(this).prop('checked', false);
         alert("Allowed only 8");
     }
+    
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
 });
 
         // Actions

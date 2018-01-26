@@ -33,10 +33,10 @@ class AdminController extends Controller
 
     public function result()
     {
-        // $total_votes = $results->sum('votes');
         $elecs = Election::all();
         $cands = Candidate::orderBy('vote' , 'desc')->get();
-        return view('admins.adminresult',compact('cands', 'elecs'));
+        $total_votes = $cands->sum('vote');
+        return view('admins.adminresult',compact('cands', 'elecs', 'total_votes'));
     }
 
     public function store(Request $request)

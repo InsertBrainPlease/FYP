@@ -10,7 +10,7 @@
 
       <div class="container">
         @foreach ($elecs as $elec)
-        <h3>{{$elec->title}}  {{$elec->session}}</h3>
+        <h3><center>{{$elec->title}}  {{$elec->session}}</center></h3>
         @endforeach
         @foreach ($cands as $cand)
         <div class="media">
@@ -24,7 +24,13 @@
               Sem: {{ $cand->sem}}<br>  
               Faculty: {{ $cand->faculty}}<br>
               Program: {{ $cand->program}} <br>
-              Vote: {{ $cand->vote}}  </p>
+              Vote: {{ $cand->vote}} <br>
+              Percentage:
+                {{ number_format(($cand->vote/$total_votes) * 100) }}%
+                <div class="progress" title="{{ $cand->percent }}%">
+                  <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:{{number_format(($cand->vote/$total_votes) * 100)}}%"></div>
+                </div> 
+              </p>  </p>
             </div>
           </div>
           <hr>
@@ -42,7 +48,7 @@
            </div>
          </div>
        </div>
-       @endif
+       @endif 
        @endforeach
 
 

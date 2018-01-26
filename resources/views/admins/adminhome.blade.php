@@ -16,6 +16,7 @@
         <th>Ic Number</th>
         <th>Program</th>
         <th>Created At</th>
+        <th>Voted<th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
         <td>{{ $user->ic_no}}</td>
         <td>{{ $user->program}}</td>
         <td>{{ $user->created_at}}</td>
+        <td>{{ $user->voted}}</td>
       </tr>
       @endforeach
     </tbody>
